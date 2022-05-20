@@ -1,0 +1,24 @@
+<div class="col-12">
+  <button class="btn btn-primary" type="submit">Update</button>
+</div>
+<table class="table table-stripe">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Customer ID</th>
+      <th>Loan Amount</th>
+      <th>Balance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="emp in loanResult">
+      <td>{{ emp.id }}</td>
+      <td>
+        {{ emp.customer.id }}. {{ emp.customer.lastName}}, {{
+        emp.customer.firstName }}
+      </td>
+      <td>{{ emp.loanAmount }}</td>
+      <td>{{ emp.balance }}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,97 @@
+<h2>Verify Customer</h2>
+
+
+
+<form>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default"
+      >Last Name</span
+    >
+    <input
+      type="text"
+      ng-model="lastName"
+      class="form-control"
+      aria-label="Sizing example input"
+      aria-describedby="inputGroup-sizing-default"
+    />
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default"
+      >First Name</span
+    >
+    <input
+      type="text"
+      ng-model="firstName"
+      class="form-control"
+      aria-label="Sizing example input"
+      aria-describedby="inputGroup-sizing-default"
+    />
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default"
+      >Occupation</span
+    >
+    <input
+      type="text"
+      ng-model="occupation"
+      class="form-control"
+      aria-label="Sizing example input"
+      aria-describedby="inputGroup-sizing-default"
+    />
+  </div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default"
+      >Loan Amount</span
+    >
+    <input
+      type="text"
+      ng-model="loanAmount"
+      class="form-control"
+      aria-label="Sizing example input"
+      aria-describedby="inputGroup-sizing-default"
+    />
+</div>
+
+<div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default"
+    >Salary</span>
+    <input
+    type="text"
+    ng-model="salary"
+    class="form-control"
+    aria-label="Sizing example input"
+    aria-describedby="inputGroup-sizing-default"/>
+</div>
+
+    <br />
+    <label for="monthsToPay" class="form-label">Months To Pay</label>
+    <select
+      ng-model="monthsToPay"
+      class="form-select form-select-lg mb-3"
+      aria-label=".form-select-lg example"
+    >
+      <option selected></option>
+      <option value="6">6</option>
+      <option value="12">12</option>
+      <option value="18">18</option>
+    </select>
+    <br />
+    <div class="alert alert-success" role="alert" ng-show="salary * 0.8 >= loanAmount">
+      Eligible for loan <a class="btn btn-primary" ng-click="postdata(person)" value="Send">Enter</a>
+    </div>
+    <br />
+
+        <div  class="alert alert-success" role="alert" ng-show="salary * 0.8 >= loanAmount">
+        Customer Verified.Proceed to loan. <a  href="/saveloan"  class="btn btn-primary" ng-click="postdata1(register)"> Proceed</a>
+    </div>
+      <br />
+ 
+  <div class="alert alert-danger" role="alert" ng-show="loanAmount > salary * 0.8">
+    Ineligible for loan. Salary not qualified for loan amount.
+  </div>
+
+  <br />
+</div>
+</form>
+
