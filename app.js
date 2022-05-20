@@ -31,6 +31,12 @@ loanApp.config(function($routeProvider){
         controller: 'saveLoanController'
     })
 
+    .when('/paynow', {
+        templateUrl: 'pages/paynow.htm',
+        controller: 'payNowController'
+    })
+
+
 
 });
 
@@ -63,54 +69,38 @@ loanApp.controller('loansController', ['$scope', '$resource', '$http', function(
 
 loanApp.controller('newLoanController', ['$scope', '$http', '$resource', 'loanService', '$routeParams', function($scope, $http, $resource, loanService, $routeParams){
 
-    $scope.person = null;
-    // var request1 =  $http.post("http://localhost:8080/customers/getbyname", {postdata: firstName, lastName, occupation, salary});
-    // var request2 =  $http.post("http://localhost:8080/saveloan", {postdata1: firstName, lastName, balance, loanAmount, monthsToPay});
+    $scope.customer = null;
 
-    // requestArray.push(request1);
-    // requestArray.push(request2);
-
-    // requestAray[0].then(function(response0){
-    //     response0 = postdata;
-    //     console.log(response0);
-    //     return requestArray[1];
-    // }).then(function(response1){
-    //     response1 = postdata1;
-    //     console.log(response1);
-    //     return requestArray[2];
-    // })
-
-
-    $scope.postdata = function () {
-        var person = {
+    $scope.saveLoan = function () {
+        var customer = {
             firstName: $scope.firstName,
             lastName: $scope.lastName,
             occupation: $scope.occupation,
             salary: $scope.salary
         };
 
-        console.log(person);
+        console.log(customer);
 
-        $http.post("http://localhost:8080/customers/getbyname", JSON.stringify(person))
+        $http.post("http://localhost:8080/customers/getbyname", JSON.stringify(customer))
         .then(function(response) {
     
             console.log(response);
 
-            $scope.person = response.data; 
+            $scope.customer = response.data; 
 
-            var register = {
+            var loan = {
                 balance: $scope.loanAmount,
                 monthsToPay: $scope.monthsToPay,
                 loanAmount: $scope.loanAmount,
-                customer: $scope.person
+                customer: $scope.customer
             };
         
-            $http.post("http://localhost:8080/saveloan", JSON.stringify(register))
+            $http.post("http://localhost:8080/saveloan/", JSON.stringify(loan))
             .then(function(response) {
         
                 console.log(response);
     
-                $scope.register = response.data; 
+                $scope.loan = response.data; 
                 
             });
            
@@ -135,24 +125,28 @@ loanApp.controller('customersController', ['$scope', '$http', function($scope, $
 loanApp.controller('saveLoanController', ['$scope', '$http', function($scope, $http) {
     
     
-    $scope.postdata1 = function () {
-        register = {
+    // $scope.postdata1 = function () {
+    //     register = {
 
-        customerId: $scope.customerId,
-        balance: $scope.balance,
-        monthsToPay: $scope.monthsToPay,
-        loanAmount: $scope.loanAmount,
-        }
+    //     customerId: $scope.customerId,
+    //     balance: $scope.balance,
+    //     monthsToPay: $scope.monthsToPay,
+    //     loanAmount: $scope.loanAmount,
+    //     }
 
-        $http.post("http://localhost:8080/saveloan", JSON.stringify(register))
-        .then(function(response) {
+    //     $http.post("http://localhost:8080/saveloan", JSON.stringify(register))
+    //     .then(function(response) {
     
-            console.log(response);
+    //         console.log(response);
 
-            $scope.register = response.data.register; 
+    //         $scope.register = response.data.register; 
            
-        });
-    }
+    //     });
+    // }
       
 
 }]); 
+
+loanApp.controller('payNowController', ['$scope', '$http', function($scope, $http) {
+
+}]);

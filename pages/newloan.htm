@@ -1,12 +1,11 @@
 <h2>Verify Customer</h2>
-
-
+<br />
 
 <form>
   <div class="input-group mb-3">
     <span class="input-group-text" id="inputGroup-sizing-default"
       >Last Name</span
-    >
+    > 
     <input
       type="text"
       ng-model="lastName"
@@ -63,8 +62,7 @@
     aria-label="Sizing example input"
     aria-describedby="inputGroup-sizing-default"/>
 </div>
-
-    <br />
+<br />
     <label for="monthsToPay" class="form-label">Months To Pay</label>
     <select
       ng-model="monthsToPay"
@@ -77,15 +75,11 @@
       <option value="18">18</option>
     </select>
     <br />
+
     <div class="alert alert-success" role="alert" ng-show="salary * 0.8 >= loanAmount">
-      Eligible for loan <a class="btn btn-primary" ng-click="postdata(person)" value="Send">Enter</a>
+      Eligible for loan <a class="btn btn-primary" ng-click="saveLoan(customer)" value="Send">Enter</a>
     </div>
     <br />
-
-        <div  class="alert alert-success" role="alert" ng-show="salary * 0.8 >= loanAmount">
-        Customer Verified.Proceed to loan. <a  href="/saveloan"  class="btn btn-primary" ng-click="postdata1(register)"> Proceed</a>
-    </div>
-      <br />
  
   <div class="alert alert-danger" role="alert" ng-show="loanAmount > salary * 0.8">
     Ineligible for loan. Salary not qualified for loan amount.
