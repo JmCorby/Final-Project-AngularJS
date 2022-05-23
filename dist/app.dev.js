@@ -26,22 +26,27 @@ loanApp.config(function ($routeProvider) {
 }); //Services
 
 loanApp.service('loanService', function () {
-  this.loan = "Apply for loan";
+  this.id = null;
+  this.customerId = null;
 }); //Controllers
 
 loanApp.controller('homeController', ['$scope', function ($scope) {}]);
-loanApp.controller('loansController', ['$scope', '$resource', '$http', function ($scope, $resource, $http) {
-  // $scope.loan = loanService.loan;
-  // $scope.loansAPI = $resource("http://localhost:8080/loans"), {callback: "JSON_CALLBACK"}, {get: {method: "JSONP"}};
-  // $scope.loansResult = $scope.loansAPI.get({});
-  // console.log($scope.loansResult);
+loanApp.controller('loansController', ['$scope', '$http', 'loanService', function ($scope, $http, loanService) {
+  $scope.payLoan = function (emp) {
+    console.log(emp);
+    $scope.loanId = emp.id;
+    $scope.customerId = emp.customer.id;
+    loanService.id = $scope.loanId;
+    loanService.customerId = $scope.customerId;
+  };
+
   $http.get("http://localhost:8080/loans").then(function (response) {
     $scope.loanResult = response.data;
     console.log($scope.loanResult);
   });
   console.log($scope.loanResult);
 }]);
-loanApp.controller('newLoanController', ['$scope', '$http', '$resource', 'loanService', '$routeParams', function ($scope, $http, $resource, loanService, $routeParams) {
+loanApp.controller('newLoanController', ['$scope', '$http', function ($scope, $http) {
   $scope.customer = null;
 
   $scope.saveLoan = function () {
@@ -75,18 +80,24 @@ loanApp.controller('customersController', ['$scope', '$http', function ($scope, 
   });
   console.log($scope.customersResult);
 }]);
-loanApp.controller('saveLoanController', ['$scope', '$http', function ($scope, $http) {// $scope.postdata1 = function () {
-  //     register = {
-  //     customerId: $scope.customerId,
-  //     balance: $scope.balance,
-  //     monthsToPay: $scope.monthsToPay,
-  //     loanAmount: $scope.loanAmount,
-  //     }
-  //     $http.post("http://localhost:8080/saveloan", JSON.stringify(register))
-  //     .then(function(response) {
-  //         console.log(response);
-  //         $scope.register = response.data.register; 
-  //     });
-  // }
+loanApp.controller('saveLoanController', ['$scope', '$http', function ($scope, $http) {}]);
+loanApp.controller('payNowController', ['$scope', '$http', 'loanService', function ($scope, $http, loanService) {
+  $scope.loanId = loanService.id;
+  $scope.customerId = loanService.customerId;
+
+  $scope.payLoan = function () {
+    var transaction = {
+      customer: {
+        "id": $scope.customerId
+      },
+      loan: {
+        "id": $scope.loanId
+      },
+      amountPaid: $scope.amountPaid
+    };
+    $http.post("http://localhost:8080/savetransaction/", transaction).then(function (response) {
+      console.log(response);
+      $scope.transaction = response.data;
+    });
+  };
 }]);
-loanApp.controller('payNowController', ['$scope', '$http', function ($scope, $http) {}]);

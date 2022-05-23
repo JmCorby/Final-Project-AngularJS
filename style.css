@@ -1,11 +1,30 @@
+* {
+    padding: 0;
+    margin-left: 0cm;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+.container {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    margin-left: 0.5cm;
+}
+
+.form-control {
+    size: 5cm;
+}
 
 h2 {
     color: rgb(235, 142, 207);
-    margin-left: 0cm;
 }
 
 a {
-    /* margin-top: 1cm; */
     color: rgb(121, 180, 248)
 }
 

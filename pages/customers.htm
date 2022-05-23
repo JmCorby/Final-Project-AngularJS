@@ -1,12 +1,11 @@
 <div class="col-12">
-  <a href="#/saveloan" class="btn btn-primary" ng-click="submit"
-    >Register Loan</a
-  >
+  <!-- <a href="#/saveloan" class="btn btn-primary" ng-click="submit"
+    >Register Loan</a>-->
 </div>
 <table class="table table-stripe">
   <thead>
     <tr>
-      <th>ID</th>
+      <th>No.</th>
       <th>First Name</th>
       <th>Last Name</th>
       <th>Occupation</th>
@@ -15,7 +14,7 @@
   </thead>
   <tbody>
     <tr ng-repeat="emp in customersResult">
-      <td>{{ emp.id }}</td>
+      <td>{{$index + 1}}</td>
       <td>{{ emp.lastName}}</td>
       <td>{{ emp.firstName }}</td>
       <td>{{ emp.occupation }}</td>

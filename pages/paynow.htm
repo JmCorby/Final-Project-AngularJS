@@ -1,7 +1,7 @@
 <h2>Pay Loans</h2>
 
 <form>
-  <div class="input-group mb-3">
+  <!-- <div class="input-group mb-3">
     <span class="input-group-text" id="inputGroup-sizing-default"
       >Customer ID</span
     >
@@ -22,7 +22,7 @@
       aria-label="Sizing example input"
       aria-describedby="inputGroup-sizing-default"
     />
-  </div>
+  </div> -->
   <div class="input-group mb-3">
     <span class="input-group-text" id="inputGroup-sizing-default">Amount</span>
     <input
@@ -33,7 +33,7 @@
       aria-describedby="inputGroup-sizing-default"
     />
   </div>
-  <div class="input-group mb-3">
+  <!-- <div class="input-group mb-3">
     <span class="input-group-text" id="inputGroup-sizing-default">Date</span>
     <input
       type="text"
@@ -43,9 +43,9 @@
       aria-label="Sizing example input"
       aria-describedby="inputGroup-sizing-default"
     />
-  </div>
+  </div> -->
   <br />
-  <button class="btn btn-primary" href="/savetransaction" type="submit">
+  <button class="btn btn-primary" ng-click="payLoan()" type="submit">
     Pay
   </button>
 </form>

@@ -1,24 +1,31 @@
 <div class="col-12">
-  <button class="btn btn-primary" type="submit">Update</button>
+  <!-- <button class="btn btn-primary" type="submit">Pay Loan</button>
+</div> -->
+  <table class="table table-stripe">
+    <thead>
+      <tr>
+        <!-- <th>ID</th> -->
+        <th>No.</th>
+        <th>Customer</th>
+        <th>Loan Amount</th>
+        <th>Balance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="emp in loanResult">
+        <!-- <td>{{ emp.id }}</td> -->
+        <td>{{$index + 1}}</td>
+        <td>{{ emp.customer.lastName}}, {{ emp.customer.firstName }}</td>
+        <td>{{ emp.loanAmount }}</td>
+        <td>{{ emp.balance }}</td>
+        <td>
+          <a href="#/paynow" ng-submit="submit">
+            <button class="btn btn-primary" ng-click="payLoan(emp)">
+              Pay Loan
+            </button>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-<table class="table table-stripe">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Customer ID</th>
-      <th>Loan Amount</th>
-      <th>Balance</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="emp in loanResult">
-      <td>{{ emp.id }}</td>
-      <td>
-        {{ emp.customer.id }}. {{ emp.customer.lastName}}, {{
-        emp.customer.firstName }}
-      </td>
-      <td>{{ emp.loanAmount }}</td>
-      <td>{{ emp.balance }}</td>
-    </tr>
-  </tbody>
-</table>
