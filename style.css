@@ -1,32 +1,41 @@
 * {
     padding: 0;
     margin-left: 0cm;
+    margin-bottom: 0cm;
     box-sizing: border-box;
 }
 
 html {
     font-size: 10px;
+};
+
+#newLoan {
+    justify-content: center;
+    background-color: pink;
 }
 
 .container {
     min-height: 100vh;
     width: 100%;
     display: flex;
-    justify-content: left;
+    justify-content: center;
     margin-left: 0.5cm;
+    background-color: rgb(236, 230, 231);
 }
 
-.form-control {
-    size: 5cm;
-}
-
-h2 {
-    color: rgb(235, 142, 207);
-}
 
 a {
-    color: rgb(121, 180, 248)
+    color: rgb(121, 180, 248);
 }
+
+
+
+
+
+
+
+
+
 
 
 

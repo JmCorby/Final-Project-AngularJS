@@ -28,6 +28,20 @@ loanApp.config(function ($routeProvider) {
 loanApp.service('loanService', function () {
   this.id = null;
   this.customerId = null;
+}); //Directives
+
+loanApp.directive('backButton', function () {
+  return {
+    restrict: 'A',
+    link: function link(scope, element, attrs) {
+      element.bind('click', goBack);
+
+      function goBack() {
+        history.back();
+        scope.$apply();
+      }
+    }
+  };
 }); //Controllers
 
 loanApp.controller('homeController', ['$scope', function ($scope) {}]);
@@ -57,7 +71,7 @@ loanApp.controller('newLoanController', ['$scope', '$http', function ($scope, $h
       salary: $scope.salary
     };
     console.log(customer);
-    $http.post("http://localhost:8080/customers/getbyname", JSON.stringify(customer)).then(function (response) {
+    $http.post("http://localhost:8080/customers/getbyname/", JSON.stringify(customer)).then(function (response) {
       console.log(response);
       $scope.customer = response.data;
       var loan = {
@@ -69,6 +83,14 @@ loanApp.controller('newLoanController', ['$scope', '$http', function ($scope, $h
       $http.post("http://localhost:8080/saveloan/", JSON.stringify(loan)).then(function (response) {
         console.log(response);
         $scope.loan = response.data;
+
+        if (response.data != null) {
+          alert("Loan Approved.");
+        } else {
+          alert("Loan Unsuccessful.");
+        }
+
+        ;
       });
     });
   };
@@ -82,6 +104,23 @@ loanApp.controller('customersController', ['$scope', '$http', function ($scope, 
 }]);
 loanApp.controller('saveLoanController', ['$scope', '$http', function ($scope, $http) {}]);
 loanApp.controller('payNowController', ['$scope', '$http', 'loanService', function ($scope, $http, loanService) {
+  $http.get("http://localhost:8080/loans/" + loanService.id.toString()).then(function (response) {
+    $scope.loan = response.data;
+    console.log($scope.loan);
+  });
+  console.log($scope.loan);
+  $http.get("http://localhost:8080/gettransactions/" + loanService.id.toString()).then(function (response) {
+    $scope.transactionsRecords = response.data;
+    console.log($scope.transactionsRecords);
+    $scope.totalAmountPaid = 0;
+    angular.forEach($scope.transactionsRecords, function (transactionRecord, key) {
+      $scope.totalAmountPaid += transactionRecord.amountPaid;
+    });
+    console.log("amount paid: " + $scope.totalAmountPaid);
+    console.log($scope.loan); // $scope.fullyPaid = $scope.totalAmountPaid >= $scope.loan.loanAmount ? true : false;
+    // console.log($scope.fullyPaid);
+  });
+  console.log($scope.transactionsRecords);
   $scope.loanId = loanService.id;
   $scope.customerId = loanService.customerId;
 
@@ -98,6 +137,13 @@ loanApp.controller('payNowController', ['$scope', '$http', 'loanService', functi
     $http.post("http://localhost:8080/savetransaction/", transaction).then(function (response) {
       console.log(response);
       $scope.transaction = response.data;
+      $scope.loan = response.data;
+
+      if (response.data != null) {
+        alert("Payment Successful.");
+      }
+
+      ;
     });
   };
 }]);

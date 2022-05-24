@@ -1,51 +1,53 @@
-<h2>Pay Loans</h2>
-
-<form>
-  <!-- <div class="input-group mb-3">
-    <span class="input-group-text" id="inputGroup-sizing-default"
-      >Customer ID</span
-    >
-    <input
-      type="text"
-      ng-model="customerID "
-      class="form-control"
-      aria-label="Sizing example input"
-      aria-describedby="inputGroup-sizing-default"
-    />
-  </div>
-  <div class="input-group mb-3">
-    <span class="input-group-text" id="inputGroup-sizing-default">Loan ID</span>
-    <input
-      type="text"
-      ng-model="loanID"
-      class="form-control"
-      aria-label="Sizing example input"
-      aria-describedby="inputGroup-sizing-default"
-    />
-  </div> -->
-  <div class="input-group mb-3">
-    <span class="input-group-text" id="inputGroup-sizing-default">Amount</span>
-    <input
-      type="text"
-      ng-model="amountPaid"
-      class="form-control"
-      aria-label="Sizing example input"
-      aria-describedby="inputGroup-sizing-default"
-    />
-  </div>
-  <!-- <div class="input-group mb-3">
-    <span class="input-group-text" id="inputGroup-sizing-default">Date</span>
-    <input
-      type="text"
-      ng-model="transactionDate"
-      class="form-control"
-      size="22.5cm"
-      aria-label="Sizing example input"
-      aria-describedby="inputGroup-sizing-default"
-    />
-  </div> -->
-  <br />
-  <button class="btn btn-primary" ng-click="payLoan()" type="submit">
-    Pay
-  </button>
-</form>
+<h2>Pay Loan</h2>
+<hr />
+<div class="name">
+  {{ loan.customer.lastName }}, {{ loan.customer.firstName }}
+</div>
+<div>Loan amount: {{ loan.loanAmount | number}}</div>
+<!-- <div ng-hide="transactionsRecords.length <= 0">
+  First Name: {{ transactionsRecords[0].customer.firstName}}
+</div> -->
+<br ng-hide="transactionsRecords.length <= 0" />
+<table class="table table-stripe" ng-hide="transactionsRecords.length <= 0">
+  <thead>
+    <tr>
+      <!-- <th>Last Name</th>
+      <th>First Name</th> -->
+      <th>Amount Paid</th>
+      <th>Transaction Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="emp in transactionsRecords">
+      <!-- <td>{{ emp.customer.lastName}}</td>
+      <td>{{ emp.customer.firstName }}</td> -->
+      <td>{{ emp.amountPaid | number }}</td>
+      <td>{{ emp.transactionDate | date: 'dd/MM/yyyy' }}</td>
+    </tr>
+  </tbody>
+</table>
+<br />
+<div ng-show="totalAmountPaid < loan.loanAmount">
+  Remaining Balance: {{ loan.loanAmount - totalAmountPaid | number }}
+  <hr />
+  <form>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-default"
+        >Amount</span
+      >
+      <input
+        type="number"
+        ng-model="amountPaid"
+        class="form-control"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-default"
+      />
+    </div>
+    <br />
+    <button class="btn btn-primary" ng-click="payLoan()" type="submit">
+      Pay
+    </button>
+  </form>
+</div>
+<a href back-button>back</a>
+<br />
