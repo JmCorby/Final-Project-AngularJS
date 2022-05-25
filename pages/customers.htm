@@ -3,6 +3,7 @@
   <!-- <a href="#/saveloan" class="btn btn-primary" ng-click="submit"
     >Register Loan</a>-->
 </div>
+<hr />
 <table class="table table-stripe">
   <thead>
     <tr>
@@ -19,7 +20,8 @@
       <td>{{ emp.lastName}}</td>
       <td>{{ emp.firstName }}</td>
       <td>{{ emp.occupation }}</td>
-      <td>{{ emp.salary }}</td>
+      <td class="number">{{ emp.salary | number }}</td>
     </tr>
   </tbody>
 </table>
+<a href back-button>Back</a>

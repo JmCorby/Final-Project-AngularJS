@@ -69,6 +69,7 @@ loanApp.controller('homeController', ['$scope', function($scope){
 }]);
 
 loanApp.controller('loansController', ['$scope', '$http', 'loanService', function($scope, $http, loanService){
+    
     $scope.payLoan = function(emp) {
         console.log(emp);
         $scope.loanId = emp.id;
@@ -83,13 +84,11 @@ loanApp.controller('loansController', ['$scope', '$http', 'loanService', functio
         $scope.loanResult=response.data;
         console.log($scope.loanResult);
     });
-    console.log($scope.loanResult);
-
-    
+    console.log($scope.loanResult);   
 }]);
 
 
-loanApp.controller('newLoanController', ['$scope', '$http', function($scope, $http){
+loanApp.controller('newLoanController', ['$scope', '$http', '$window', function($scope, $http, $window){
 
     $scope.customer = null;
 
@@ -123,7 +122,8 @@ loanApp.controller('newLoanController', ['$scope', '$http', function($scope, $ht
                 $scope.loan = response.data; 
 
                 if (response.data != null) {
-                    alert("Loan Approved.")
+                    alert("Loan Approved. Redirect to home.");
+                    $window.location.href = "#/"
                 } else {
                     alert("Loan Unsuccessful.")
                 };  
@@ -148,7 +148,7 @@ loanApp.controller('saveLoanController', ['$scope', '$http', function($scope, $h
     
 }]); 
 
-loanApp.controller('payNowController', ['$scope', '$http', 'loanService',  function($scope, $http, loanService) {
+loanApp.controller('payNowController', ['$scope', '$http', 'loanService', '$window',  function($scope, $http, loanService, $window) {
 
     $http.get("http://localhost:8080/loans/" + loanService.id.toString())
     .then(function(response){
@@ -170,8 +170,6 @@ loanApp.controller('payNowController', ['$scope', '$http', 'loanService',  funct
         });
         console.log("amount paid: " + $scope.totalAmountPaid);
         console.log($scope.loan);
-        // $scope.fullyPaid = $scope.totalAmountPaid >= $scope.loan.loanAmount ? true : false;
-        // console.log($scope.fullyPaid);
     });
 
     console.log($scope.transactionsRecords);
@@ -193,10 +191,9 @@ loanApp.controller('payNowController', ['$scope', '$http', 'loanService',  funct
                 $scope.loan = response.data; 
 
                 if (response.data != null) {
-                    alert("Payment Successful.")
+                    alert("Payment Successful. Click Ok to redirect.");
+                    $window.location.href = "#/loans";
                 }; 
             });
-    };
-
-    
+    };   
 }]);

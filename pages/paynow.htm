@@ -1,28 +1,21 @@
 <h2>Pay Loan</h2>
 <hr />
 <div class="name">
-  {{ loan.customer.lastName }}, {{ loan.customer.firstName }}
+  <strong>{{ loan.customer.lastName }}, {{ loan.customer.firstName }}</strong>
 </div>
 <div>Loan amount: {{ loan.loanAmount | number}}</div>
-<!-- <div ng-hide="transactionsRecords.length <= 0">
-  First Name: {{ transactionsRecords[0].customer.firstName}}
-</div> -->
 <br ng-hide="transactionsRecords.length <= 0" />
 <table class="table table-stripe" ng-hide="transactionsRecords.length <= 0">
   <thead>
     <tr>
-      <!-- <th>Last Name</th>
-      <th>First Name</th> -->
       <th>Amount Paid</th>
       <th>Transaction Date</th>
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="emp in transactionsRecords">
-      <!-- <td>{{ emp.customer.lastName}}</td>
-      <td>{{ emp.customer.firstName }}</td> -->
-      <td>{{ emp.amountPaid | number }}</td>
-      <td>{{ emp.transactionDate | date: 'dd/MM/yyyy' }}</td>
+      <td class="number">{{ emp.amountPaid | number }}</td>
+      <td class="number">{{ emp.transactionDate | date: 'dd/MM/yyyy' }}</td>
     </tr>
   </tbody>
 </table>
@@ -49,5 +42,13 @@
     </button>
   </form>
 </div>
-<a href back-button>back</a>
+<!-- <div
+  class="alert alert-danger alert-dismissible"
+  role="alert"
+  ng-hide="amountPaid < (loan.loanAmount - totalAmountPaid)"
+>
+  <button type="submit" class="close" data-dismiss="alert">&times;</button>
+  Payment must be less than the remaining balance.
+</div> -->
 <br />
+<a href back-button>Back</a>

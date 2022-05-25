@@ -3,15 +3,7 @@
     margin-left: 0cm;
     margin-bottom: 0cm;
     box-sizing: border-box;
-}
-
-html {
-    font-size: 10px;
-};
-
-#newLoan {
-    justify-content: center;
-    background-color: pink;
+    font-family: 'Poppins', sans-serif;
 }
 
 .container {
@@ -19,15 +11,82 @@ html {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-left: 0.5cm;
-    background-color: rgb(236, 230, 231);
+    font-family: 'Poppins', sans-serif;
+    /* background-color: #dad8db; */
 }
 
-
-a {
-    color: rgb(121, 180, 248);
+body {
+	font-family: 'Poppins', sans-serif;
 }
 
+td.number {
+    text-align: right;
+}
+
+html {
+    font-size: 10px;
+};
+
+div.links{
+    flex-direction: row;
+}
+
+.welcome {
+    position: absolute;
+	width: 500px;
+	height: 300px;
+	margin: 10% -10%;
+    font-family: 'Poppins', sans-serif;
+   
+}
+
+.welcome h1 {
+    justify-content: center;
+	color: rgb(15, 15, 15);
+	text-transform: uppercase;
+	font-size: 60px
+}
+
+.welcome a {
+    border: 1px solid #e6ccf0;
+	padding: 10px 25px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 14px;
+	margin-top: 20px;
+	display: inline-block;
+	color: rgb(8, 8, 8);
+    font-family: 'Poppins', sans-serif
+}
+
+nav ul li a {
+    color: rgb(13, 13, 14);
+	text-decoration: none;
+	padding: 5px 20px;
+	font-family: poppins;
+	font-size: 16px;
+	text-transform: uppercase;
+    justify-content: right;
+}
+
+nav ul li a:hover {
+	background: #fff;
+	color: #333;
+}
+
+nav a {
+    color: rgb(31, 32, 34);
+	text-decoration: none;
+	padding: 5px 20px;
+	font-family: poppins;
+	font-size: 16px;
+	text-transform: uppercase;
+    justify-content: right;
+}
+
+#newLoan {
+    justify-content: center;
+}
 
 
 

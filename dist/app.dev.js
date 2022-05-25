@@ -60,7 +60,7 @@ loanApp.controller('loansController', ['$scope', '$http', 'loanService', functio
   });
   console.log($scope.loanResult);
 }]);
-loanApp.controller('newLoanController', ['$scope', '$http', function ($scope, $http) {
+loanApp.controller('newLoanController', ['$scope', '$http', '$window', function ($scope, $http, $window) {
   $scope.customer = null;
 
   $scope.saveLoan = function () {
@@ -85,7 +85,8 @@ loanApp.controller('newLoanController', ['$scope', '$http', function ($scope, $h
         $scope.loan = response.data;
 
         if (response.data != null) {
-          alert("Loan Approved.");
+          alert("Loan Approved. Redirect to home.");
+          $window.location.href = "#/";
         } else {
           alert("Loan Unsuccessful.");
         }
@@ -103,7 +104,7 @@ loanApp.controller('customersController', ['$scope', '$http', function ($scope, 
   console.log($scope.customersResult);
 }]);
 loanApp.controller('saveLoanController', ['$scope', '$http', function ($scope, $http) {}]);
-loanApp.controller('payNowController', ['$scope', '$http', 'loanService', function ($scope, $http, loanService) {
+loanApp.controller('payNowController', ['$scope', '$http', 'loanService', '$window', function ($scope, $http, loanService, $window) {
   $http.get("http://localhost:8080/loans/" + loanService.id.toString()).then(function (response) {
     $scope.loan = response.data;
     console.log($scope.loan);
@@ -117,8 +118,7 @@ loanApp.controller('payNowController', ['$scope', '$http', 'loanService', functi
       $scope.totalAmountPaid += transactionRecord.amountPaid;
     });
     console.log("amount paid: " + $scope.totalAmountPaid);
-    console.log($scope.loan); // $scope.fullyPaid = $scope.totalAmountPaid >= $scope.loan.loanAmount ? true : false;
-    // console.log($scope.fullyPaid);
+    console.log($scope.loan);
   });
   console.log($scope.transactionsRecords);
   $scope.loanId = loanService.id;
@@ -140,7 +140,8 @@ loanApp.controller('payNowController', ['$scope', '$http', 'loanService', functi
       $scope.loan = response.data;
 
       if (response.data != null) {
-        alert("Payment Successful.");
+        alert("Payment Successful. Click Ok to redirect.");
+        $window.location.href = "#/loans";
       }
 
       ;
