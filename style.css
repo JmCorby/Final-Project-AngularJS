@@ -12,7 +12,7 @@
     display: flex;
     justify-content: center;
     font-family: 'Poppins', sans-serif;
-    /* background-color: #dad8db; */
+    /* background-image: linear-gradient(to bottom, rgba(221, 96, 238, 0.884), rgb(226, 108, 201)) */
 }
 
 body {
@@ -48,7 +48,7 @@ div.links{
 }
 
 .welcome a {
-    border: 1px solid #e6ccf0;
+    border: 1.5px solid #e6ccf0;
 	padding: 10px 25px;
 	text-decoration: none;
 	text-transform: uppercase;
@@ -88,7 +88,9 @@ nav a {
     justify-content: center;
 }
 
-
+.searchBox {
+    align-self: right;
+}
 
 
 

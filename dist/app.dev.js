@@ -16,10 +16,11 @@ loanApp.config(function ($routeProvider) {
   }).when('/customers', {
     templateUrl: 'pages/customers.htm',
     controller: 'customersController'
-  }).when('/saveloan', {
-    templateUrl: 'pages/saveloan.htm',
-    controller: 'saveLoanController'
-  }).when('/paynow', {
+  }) // .when('/saveloan', {
+  //     templateUrl: 'pages/saveloan.htm',
+  //     controller: 'saveLoanController'
+  // })
+  .when('/paynow', {
     templateUrl: 'pages/paynow.htm',
     controller: 'payNowController'
   });
@@ -57,8 +58,7 @@ loanApp.controller('loansController', ['$scope', '$http', 'loanService', functio
   $http.get("http://localhost:8080/loans").then(function (response) {
     $scope.loanResult = response.data;
     console.log($scope.loanResult);
-  });
-  console.log($scope.loanResult);
+  }); // console.log($scope.loanResult);   
 }]);
 loanApp.controller('newLoanController', ['$scope', '$http', '$window', function ($scope, $http, $window) {
   $scope.customer = null;
@@ -100,16 +100,16 @@ loanApp.controller('customersController', ['$scope', '$http', function ($scope, 
   $http.get("http://localhost:8080/customers").then(function (response) {
     $scope.customersResult = response.data;
     console.log($scope.customersResult);
-  });
-  console.log($scope.customersResult);
-}]);
-loanApp.controller('saveLoanController', ['$scope', '$http', function ($scope, $http) {}]);
+  }); // console.log($scope.customersResult);
+}]); // loanApp.controller('saveLoanController', ['$scope', '$http', function($scope, $http) {
+// }]); 
+
 loanApp.controller('payNowController', ['$scope', '$http', 'loanService', '$window', function ($scope, $http, loanService, $window) {
   $http.get("http://localhost:8080/loans/" + loanService.id.toString()).then(function (response) {
     $scope.loan = response.data;
     console.log($scope.loan);
-  });
-  console.log($scope.loan);
+  }); // console.log($scope.loan);
+
   $http.get("http://localhost:8080/gettransactions/" + loanService.id.toString()).then(function (response) {
     $scope.transactionsRecords = response.data;
     console.log($scope.transactionsRecords);
@@ -117,10 +117,9 @@ loanApp.controller('payNowController', ['$scope', '$http', 'loanService', '$wind
     angular.forEach($scope.transactionsRecords, function (transactionRecord, key) {
       $scope.totalAmountPaid += transactionRecord.amountPaid;
     });
-    console.log("amount paid: " + $scope.totalAmountPaid);
-    console.log($scope.loan);
-  });
-  console.log($scope.transactionsRecords);
+    console.log("amount paid: " + $scope.totalAmountPaid); // console.log($scope.loan);
+  }); // console.log($scope.transactionsRecords);
+
   $scope.loanId = loanService.id;
   $scope.customerId = loanService.customerId;
 

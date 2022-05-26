@@ -1,3 +1,18 @@
+<div class="searchBox">
+  <input type="text" placeholder="Name" ng-model="searchName" />
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    fill="currentColor"
+    class="bi bi-search"
+    viewBox="0 0 16 16"
+  >
+    <path
+      d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+    />
+  </svg>
+</div>
 <div class="col-12">
   <h2>Customers</h2>
   <!-- <a href="#/saveloan" class="btn btn-primary" ng-click="submit"
@@ -7,7 +22,7 @@
 <table class="table table-stripe">
   <thead>
     <tr>
-      <th>No.</th>
+      <!-- <th>No.</th> -->
       <th>Last Name</th>
       <th>First Name</th>
       <th>Occupation</th>
@@ -15,8 +30,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="emp in customersResult | orderBy: 'lastName'">
-      <td>{{$index + 1}}</td>
+    <tr
+      ng-repeat="emp in customersResult | orderBy: 'lastName' | filter: searchName"
+    >
+      <!-- <td>{{$index + 1}}</td> -->
       <td>{{ emp.lastName}}</td>
       <td>{{ emp.firstName }}</td>
       <td>{{ emp.occupation }}</td>

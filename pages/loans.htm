@@ -20,7 +20,7 @@
     <thead>
       <tr>
         <!-- <th>ID</th> -->
-        <th>No.</th>
+        <!-- <th>No.</th> -->
         <th>Customer</th>
         <th>Loan Amount</th>
         <th>Balance</th>
@@ -29,7 +29,7 @@
     <tbody>
       <tr ng-repeat="emp in loanResult | filter: searchName">
         <!-- <td>{{ emp.id }}</td> -->
-        <td>{{$index + 1}}</td>
+        <!-- <td>{{$index + 1}}</td> -->
         <td>{{ emp.customer.lastName}}, {{ emp.customer.firstName }}</td>
         <td class="number">{{ emp.loanAmount | number }}</td>
         <td class="number">{{ emp.balance | number }}</td>

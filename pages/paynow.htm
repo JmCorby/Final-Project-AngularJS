@@ -42,13 +42,12 @@
     </button>
   </form>
 </div>
-<!-- <div
+<br />
+<div
   class="alert alert-danger alert-dismissible"
   role="alert"
-  ng-hide="amountPaid < (loan.loanAmount - totalAmountPaid)"
+  ng-show="amountPaid > (loan.loanAmount - totalAmountPaid)"
 >
-  <button type="submit" class="close" data-dismiss="alert">&times;</button>
-  Payment must be less than the remaining balance.
-</div> -->
-<br />
+  Payment is greater than the remaining balance.
+</div>
 <a href back-button>Back</a>
