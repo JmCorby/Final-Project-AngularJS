@@ -31,8 +31,6 @@ loanApp.config(function($routeProvider){
         controller: 'payNowController'
     })
 
-
-
 });
 
 //Services
@@ -81,7 +79,6 @@ loanApp.controller('loansController', ['$scope', '$http', 'loanService', functio
     });
     
 }]);
-
 
 loanApp.controller('newLoanController', ['$scope', '$http', '$window', function($scope, $http, $window){
 
