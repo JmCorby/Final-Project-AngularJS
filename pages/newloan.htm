@@ -1,63 +1,67 @@
-<h2>New Loan</h2>
-<br />
-<form>
-  <div class="input-group mb-3">
-    <span class="details" id="newloan-page"
-      >Last Name&nbsp;&nbsp;&nbsp;&nbsp;</span
+<container id="newloan">
+  <h2>New Loan</h2>
+  <br />
+  <form>
+    <div class="input-group mb-3">
+      <span class="details" id="newloan-page"
+        >Last Name&nbsp;&nbsp;&nbsp;&nbsp;</span
+      >
+      <input type="text" ng-model="lastName" class="form-control" />
+    </div>
+    <br />
+    <div class="input-group mb-3">
+      <span class="details" id="newloan-page"
+        >First Name&nbsp;&nbsp;&nbsp;&nbsp;</span
+      >
+      <input type="text" ng-model="firstName" class="form-control" />
+    </div>
+    <br />
+    <div class="input-group mb-3">
+      <span class="details" id="newloan-page"
+        >Occupation&nbsp;&nbsp;&nbsp;</span
+      >
+      <input type="text" ng-model="occupation" class="form-control" />
+    </div>
+    <br />
+    <div class="input-group mb-3">
+      <span class="details" id="newloan-page">Loan Amount</span>
+      <input type="number" ng-model="loanAmount" class="form-control" />
+    </div>
+    <br />
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="newloan-page"
+        >Salary&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
+      >
+      <input type="number" ng-model="salary" class="form-control" />
+    </div>
+    <br />
+    <div>
+      <label for="monthsToPay" class="form-label">Months To Pay</label>
+      <select ng-model="monthsToPay" class="form-select form-select-lg mb-3">
+        <option selected></option>
+        <option value="6">6</option>
+        <option value="12">12</option>
+        <option value="18">18</option>
+      </select>
+    </div>
+    <br />
+    <div
+      class="alert alert-success"
+      role="alert"
+      ng-show="salary * 0.8 >= loanAmount"
     >
-    <input type="text" ng-model="lastName" class="form-control" />
-  </div>
-  <br />
-  <div class="input-group mb-3">
-    <span class="details" id="newloan-page"
-      >First Name&nbsp;&nbsp;&nbsp;&nbsp;</span
+      Eligible for loan. Click Enter to register loan. &nbsp;&nbsp;&nbsp;
+      <a class="btn btn-primary" ng-click="saveLoan(customer)" value="Send"
+        >Enter</a
+      >
+    </div>
+    <div
+      class="alert alert-danger"
+      role="alert"
+      ng-show="loanAmount > salary * 0.8"
     >
-    <input type="text" ng-model="firstName" class="form-control" />
-  </div>
-  <br />
-  <div class="input-group mb-3">
-    <span class="details" id="newloan-page">Occupation&nbsp;&nbsp;&nbsp;</span>
-    <input type="text" ng-model="occupation" class="form-control" />
-  </div>
-  <br />
-  <div class="input-group mb-3">
-    <span class="details" id="newloan-page">Loan Amount</span>
-    <input type="number" ng-model="loanAmount" class="form-control" />
-  </div>
-  <br />
-  <div class="input-group mb-3">
-    <span class="input-group-text" id="newloan-page"
-      >Salary&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
-    >
-    <input type="number" ng-model="salary" class="form-control" />
-  </div>
-  <br />
-  <div>
-    <label for="monthsToPay" class="form-label">Months To Pay</label>
-    <select ng-model="monthsToPay" class="form-select form-select-lg mb-3">
-      <option selected></option>
-      <option value="6">6</option>
-      <option value="12">12</option>
-      <option value="18">18</option>
-    </select>
-  </div>
-  <br />
-  <div
-    class="alert alert-success"
-    role="alert"
-    ng-show="salary * 0.8 >= loanAmount"
-  >
-    Eligible for loan. Click Enter to register loan. &nbsp;&nbsp;&nbsp;
-    <a class="btn btn-primary" ng-click="saveLoan(customer)" value="Send"
-      >Enter</a
-    >
-  </div>
-  <div
-    class="alert alert-danger"
-    role="alert"
-    ng-show="loanAmount > salary * 0.8"
-  >
-    Ineligible for loan. Salary not qualified for loan amount.
-  </div>
-</form>
-<a href back-button>Back</a>
+      Ineligible for loan. Salary not qualified for loan amount.
+    </div>
+  </form>
+  <a href back-button>Back</a>
+</container>

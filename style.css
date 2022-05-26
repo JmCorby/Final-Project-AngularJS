@@ -12,11 +12,12 @@
     display: flex;
     justify-content: center;
     font-family: 'Poppins', sans-serif;
-    /* background-image: linear-gradient(to bottom, rgba(221, 96, 238, 0.884), rgb(226, 108, 201)) */
+	/* background-color: aliceblue; */
 }
 
 body {
 	font-family: 'Poppins', sans-serif;
+	/* background-image: linear-gradient(134deg, #71b7e6, #9b59b6) */
 }
 
 td.number {
@@ -48,7 +49,7 @@ div.links{
 }
 
 .welcome a {
-    border: 1.5px solid #e6ccf0;
+    border: 1.5px solid #bc6bdb;
 	padding: 10px 25px;
 	text-decoration: none;
 	text-transform: uppercase;
@@ -81,10 +82,6 @@ nav a {
 	font-family: poppins;
 	font-size: 16px;
 	text-transform: uppercase;
-    justify-content: right;
-}
-
-#newLoan {
     justify-content: center;
 }
 

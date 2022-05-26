@@ -1,7 +1,7 @@
 //Module
 var loanApp = angular.module('loanApp', ['ngRoute', 'ngResource']);
 
-//routes
+//Routes
 loanApp.config(function($routeProvider){
 
     $routeProvider
@@ -25,11 +25,6 @@ loanApp.config(function($routeProvider){
         templateUrl: 'pages/customers.htm',
         controller: 'customersController'
     })
-
-    // .when('/saveloan', {
-    //     templateUrl: 'pages/saveloan.htm',
-    //     controller: 'saveLoanController'
-    // })
 
     .when('/paynow', {
         templateUrl: 'pages/paynow.htm',
@@ -84,7 +79,7 @@ loanApp.controller('loansController', ['$scope', '$http', 'loanService', functio
         $scope.loanResult=response.data;
         console.log($scope.loanResult);
     });
-    // console.log($scope.loanResult);   
+    
 }]);
 
 
@@ -140,13 +135,8 @@ loanApp.controller('customersController', ['$scope', '$http', function($scope, $
         $scope.customersResult=response.data;
         console.log($scope.customersResult);
     });
-    // console.log($scope.customersResult);
 
 }]); 
-
-// loanApp.controller('saveLoanController', ['$scope', '$http', function($scope, $http) {
-    
-// }]); 
 
 loanApp.controller('payNowController', ['$scope', '$http', 'loanService', '$window',  function($scope, $http, loanService, $window) {
 
@@ -156,7 +146,6 @@ loanApp.controller('payNowController', ['$scope', '$http', 'loanService', '$wind
         $scope.loan = response.data;
         console.log($scope.loan);
     });
-    // console.log($scope.loan);
 
     $http.get("http://localhost:8080/gettransactions/" + loanService.id.toString())
     .then(function(response){
@@ -169,9 +158,8 @@ loanApp.controller('payNowController', ['$scope', '$http', 'loanService', '$wind
             $scope.totalAmountPaid += transactionRecord.amountPaid;
         });
         console.log("amount paid: " + $scope.totalAmountPaid);
-        // console.log($scope.loan);
     });
-    // console.log($scope.transactionsRecords);
+    
     $scope.loanId = loanService.id;
     $scope.customerId = loanService.customerId;
 
