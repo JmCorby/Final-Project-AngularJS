@@ -46,6 +46,7 @@
 <div
   class="alert alert-danger alert-dismissible"
   role="alert"
+  ng-disabled="amountPaid > (loan.loanAmount - totalAmountPaid)"
   ng-show="amountPaid > (loan.loanAmount - totalAmountPaid)"
 >
   Payment is greater than the remaining balance.
